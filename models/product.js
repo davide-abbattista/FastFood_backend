@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const productSchema = mongoose.Schema({
     productId: {
         type: Number,
+        required: true,
         unique: true
     },
     type: {
@@ -12,7 +13,7 @@ const productSchema = mongoose.Schema({
         }
     },
     name: String,
-    ingredients: [String],
+    ingredients: String,
     price: Number
 });
 

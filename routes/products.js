@@ -3,3 +3,5 @@ const express = require('express'),
 
 productsRouter = express.Router();
 
+productsRouter.route('/')
+.post(productController.addProduct)
