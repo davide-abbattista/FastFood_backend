@@ -5,17 +5,9 @@ const orderSchema = mongoose.Schema({
         type: Number,
         unique: true
     },
-    burgers: {
+    products: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Burger'
-    },
-    sides: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Side'
-    },
-    drinks: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Drink'
+        ref: 'Product'
     },
     total: Number,
 });

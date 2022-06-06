@@ -16,4 +16,4 @@ app.use(express.json());
 
 app.use(router);
 
-app.listen(3000, () => console.log("Backend server is running"));
+app.listen(process.env.PORT, () => console.log("Backend server is running"));
