@@ -6,10 +6,10 @@ const orderSchema = mongoose.Schema({
         required: true,
         unique: true
     },
-    products: {
+    products: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Product'
-    },
+    }],
     total: Number,
 });
 
