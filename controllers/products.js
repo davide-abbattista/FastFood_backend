@@ -49,7 +49,7 @@ module.exports = {
 
     deleteProduct: (req, res, next) => {
         Product.findByIdAndDelete(res.locals.id).exec()
-            .then(() => res.status(200).json("Il prodotto è stato rimosso"))
+            .then(deletedProduct => res.status(200).json(`${deletedProduct} rimosso`))
             .catch(error => res.status(500).json(error));
     }
 }
