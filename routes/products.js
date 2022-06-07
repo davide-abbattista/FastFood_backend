@@ -4,6 +4,7 @@ const express = require('express'),
 productsRouter = express.Router();
 
 productsRouter.route('/')
+    .get(productController.getProducts)
     .post(productController.addProduct);
 
 productsRouter.route('/:id')

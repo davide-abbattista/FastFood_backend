@@ -1,10 +1,19 @@
 const Product = require('../models/product');
 
 module.exports = {
+    getProducts: (req, res, next) => {
+        Product.find({}).exec()
+            .then(products => {
+                res.status(200).json(products);
+            })
+            .catch(error => {
+                res.status(500).json(error);
+            })
+    },
+
     addProduct: (req, res, next) => {
         Product.create(req.body, (error, savedProduct) => {
             if (error) {
-                console.log(error);
                 res.status(500).json(error);
             } else {
                 console.log(`${savedProduct} inserito`);
