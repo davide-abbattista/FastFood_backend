@@ -13,10 +13,21 @@ module.exports = {
         });
     },
 
+    findIdOfProduct: (req, res, next) => {
+        Product.findOne({productId: req.params.id}).exec()
+            .then(product => {
+                res.locals.id = product._id;
+                next();
+            })
+            .catch(error => {
+                res.status(500).json(error);
+            })
+    },
+
     updateProduct: (req, res, next) => {
-        Product.findByIdAndUpdate(req.params.id, {
+        Product.findByIdAndUpdate(res.locals.id, {
             $set: req.body
-        },{new: true}).exec()
+        },null).exec()
             .then(updatedProduct => {
                 console.log(`${updatedProduct} aggiornato`);
                 res.status(200).json(updatedProduct);
@@ -28,8 +39,8 @@ module.exports = {
         },
 
     deleteProduct: (req, res, next) => {
-        Product.findByIdAndDelete(req.params.id).exec()
-            .then(() => res.status(200).json("L'utente è stato rimosso"))
+        Product.findByIdAndDelete(res.locals.id).exec()
+            .then(() => res.status(200).json("Il prodotto è stato rimosso"))
             .catch(error => res.status(500).json(error));
     }
 }
