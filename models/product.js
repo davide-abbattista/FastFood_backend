@@ -20,8 +20,7 @@ const productSchema = mongoose.Schema({
     price: {
         type: Number,
         required: true
-    },
-    image: Buffer
+    }
 });
 
 const Product = mongoose.model('Product', productSchema);
