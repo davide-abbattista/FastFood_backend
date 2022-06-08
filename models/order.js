@@ -6,11 +6,23 @@ const orderSchema = mongoose.Schema({
         required: true,
         unique: true
     },
+    clientName: {
+        type: String,
+        required: true
+    },
     products: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Product'
+        ref: 'Product',
+        required: true
     }],
-    total: Number,
+    total: {
+        type: Number,
+        required: true
+    },
+    isConcluded: {
+        type: Boolean,
+        default: false
+    }
 });
 
 const Order = mongoose.model('Order', orderSchema);

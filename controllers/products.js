@@ -32,7 +32,7 @@ module.exports = {
     updateProduct: (req, res, next) => {
         Product.findByIdAndUpdate(res.locals.id, {
             $set: req.body
-        },null).exec()
+        },{new: true}).exec()
             .then(oldProduct => {
                 console.log(`${oldProduct} aggiornato`);
                 res.status(200).json(`Il prodotto con id: ${oldProduct.productId} è stato aggiornato`);

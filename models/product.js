@@ -10,7 +10,8 @@ const productSchema = mongoose.Schema({
         type: String,
         enum: {
             values: ['Panino', 'Bibita', 'Contorno']
-        }
+        },
+        required: true
     },
     name: {
         type: String,
@@ -20,7 +21,8 @@ const productSchema = mongoose.Schema({
     price: {
         type: Number,
         required: true
-    }
+    },
+    image: String
 });
 
 const Product = mongoose.model('Product', productSchema);
