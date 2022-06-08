@@ -15,7 +15,7 @@ module.exports = {
                 res.status(500).json(error);
             } else {
                 console.log(`${savedProduct} inserito`);
-                res.status(200).json(`Il prodotto con id: ${savedProduct.productId} è stato inserito`);
+                res.status(200).json({message: `Il prodotto con id: ${savedProduct.productId} è stato inserito`});
             }
         });
     },
@@ -35,7 +35,7 @@ module.exports = {
         },{new: true}).exec()
             .then(oldProduct => {
                 console.log(`${oldProduct} aggiornato`);
-                res.status(200).json(`Il prodotto con id: ${oldProduct.productId} è stato aggiornato`);
+                res.status(200).json({message: `Il prodotto con id: ${oldProduct.productId} è stato aggiornato`});
             })
             .catch(error => res.status(500).json(error))
         },
@@ -44,7 +44,7 @@ module.exports = {
         Product.findByIdAndDelete(res.locals.id).exec()
             .then(deletedProduct => {
                 console.log(`${deletedProduct} rimosso`);
-                res.status(200).json(`Il prodotto con id: ${deletedProduct.productId} è stato rimosso`);
+                res.status(200).json({message: `Il prodotto con id: ${deletedProduct.productId} è stato rimosso`});
             })
             .catch(error => res.status(500).json(error));
     }

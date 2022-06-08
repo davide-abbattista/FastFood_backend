@@ -15,7 +15,7 @@ module.exports = {
                 res.status(500).json(error);
             } else {
                 console.log(`${savedOrder} inserito`);
-                res.status(200).json(`L'ordine con id: ${savedOrder.orderId} è stato inserito`);
+                res.status(200).json({message: `L'ordine con id: ${savedOrder.orderId} è stato inserito`});
             }
         });
     },
@@ -44,7 +44,7 @@ module.exports = {
         },{new: true}).exec()
             .then(oldOrder => {
                 console.log(`${oldOrder} concluso`);
-                res.status(200).json(`L'ordine con id: ${oldOrder.orderId} è stato concluso`);
+                res.status(200).json({message: `L'ordine con id: ${oldOrder.orderId} è stato concluso`});
             })
             .catch(error => res.status(500).json(error))
     }
