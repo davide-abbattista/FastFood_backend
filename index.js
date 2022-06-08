@@ -5,15 +5,13 @@ const express = require('express'),
 
 dotenv.config();
 
-mongoose.connect(process.env.MONGODB_URL, {useNewUrlParser: true});
-const db = mongoose.connection;
-db.once("open", () => console.log("Successful connection to database"));
-
 const app = express();
-
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-
 app.use(router);
 
-app.listen(process.env.PORT, () => console.log("Backend server is running"));
+mongoose.connect(process.env.MONGODB_URI)
+    .then(() => {
+        console.log("Successful connection to database");
+        app.listen(process.env.PORT || 3000, () => console.log("Backend server is running"));
+    });
