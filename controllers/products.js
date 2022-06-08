@@ -2,7 +2,7 @@ const Product = require('../models/product');
 
 module.exports = {
     getProducts: (req, res, next) => {
-        Product.find({}).exec()
+        Product.find({}).sort({type: -1}).exec()
             .then(products => {
                 res.status(200).json(products);
             })
