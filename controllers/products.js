@@ -4,6 +4,7 @@ module.exports = {
     getProducts: (req, res, next) => {
         Product.find({}).sort({type: -1}).exec()
             .then(products => {
+                console.log('Getting products');
                 res.status(200).json(products);
             })
             .catch(error => res.status(500).json(error))
