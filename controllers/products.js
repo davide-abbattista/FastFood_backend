@@ -42,7 +42,7 @@ module.exports = {
         },
 
     deleteProduct: (req, res, next) => {
-        Product.findByIdAndDelete(req.params.id).exec()
+        Product.findByIdAndDelete(req.params._id).exec()
             .then(deletedProduct => {
                 console.log(`${deletedProduct} rimosso`);
                 res.status(200).json({message: `Il prodotto con id: ${deletedProduct._id} è stato rimosso`});
