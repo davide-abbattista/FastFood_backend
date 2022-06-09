@@ -7,9 +7,9 @@ ordersRouter.route('/')
     .get(orderController.getOrders)
     .post(orderController.addOrder);
 
-ordersRouter.route('/:id')
+ordersRouter.route('/:_id')
     // .delete(orderController.findIdOfOrder, orderController.deleteOrder)
-    .put(orderController.findIdOfOrder, orderController.concludeOrder);
+    .put(orderController.concludeOrder);
 
 module.exports = ordersRouter;
 

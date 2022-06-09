@@ -16,36 +16,36 @@ module.exports = {
                 res.status(500).json(error);
             } else {
                 console.log(`${savedProduct} inserito`);
-                res.status(200).json({message: `Il prodotto con id: ${savedProduct.productId} è stato inserito`});
+                res.status(200).json({message: `Il prodotto con id: ${savedProduct._id} è stato inserito`});
             }
         });
     },
 
-    findIdOfProduct: (req, res, next) => {
-        Product.findOne({productId: req.params.id}).exec()
-            .then(product => {
-                res.locals.id = product._id;
-                next();
-            })
-            .catch(error => res.status(500).json(error))
-    },
+    // findIdOfProduct: (req, res, next) => {
+    //     Product.findOne({productId: req.params.id}).exec()
+    //         .then(product => {
+    //             res.locals.id = product._id;
+    //             next();
+    //         })
+    //         .catch(error => res.status(500).json(error))
+    // },
 
     updateProduct: (req, res, next) => {
-        Product.findByIdAndUpdate(res.locals.id, {
+        Product.findByIdAndUpdate(req.params._id, {
             $set: req.body
         },{new: true}).exec()
             .then(oldProduct => {
                 console.log(`${oldProduct} aggiornato`);
-                res.status(200).json({message: `Il prodotto con id: ${oldProduct.productId} è stato aggiornato`});
+                res.status(200).json({message: `Il prodotto con id: ${oldProduct._id} è stato aggiornato`});
             })
             .catch(error => res.status(500).json(error))
         },
 
     deleteProduct: (req, res, next) => {
-        Product.findByIdAndDelete(res.locals.id).exec()
+        Product.findByIdAndDelete(req.params.id).exec()
             .then(deletedProduct => {
                 console.log(`${deletedProduct} rimosso`);
-                res.status(200).json({message: `Il prodotto con id: ${deletedProduct.productId} è stato rimosso`});
+                res.status(200).json({message: `Il prodotto con id: ${deletedProduct._id} è stato rimosso`});
             })
             .catch(error => res.status(500).json(error));
     }

@@ -7,8 +7,8 @@ productsRouter.route('/')
     .get(productController.getProducts)
     .post(productController.addProduct);
 
-productsRouter.route('/:id')
-    .put(productController.findIdOfProduct, productController.updateProduct)
-    .delete(productController.findIdOfProduct, productController.deleteProduct)
+productsRouter.route('/:_id')
+    .put(productController.updateProduct)
+    .delete(productController.deleteProduct)
 
 module.exports = productsRouter;

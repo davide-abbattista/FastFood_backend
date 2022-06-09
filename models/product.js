@@ -1,11 +1,7 @@
 const mongoose = require('mongoose');
 
 const productSchema = mongoose.Schema({
-    productId: {
-        type: Number,
-        required: true,
-        unique: true
-    },
+    // productId: mongoose.Schema.Types.ObjectId,
     type: {
         type: String,
         enum: {

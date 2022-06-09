@@ -1,11 +1,7 @@
 const mongoose = require('mongoose');
 
 const orderSchema = mongoose.Schema({
-    orderId: {
-        type: Number,
-        required: true,
-        unique: true
-    },
+    // orderId: mongoose.Schema.Types.ObjectId,
     clientName: {
         type: String,
         required: true
