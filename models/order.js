@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const orderSchema = mongoose.Schema({
-    // orderId: mongoose.Schema.Types.ObjectId,
     clientName: {
         type: String,
         required: true

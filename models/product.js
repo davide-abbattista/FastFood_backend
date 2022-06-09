@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const productSchema = mongoose.Schema({
-    // productId: mongoose.Schema.Types.ObjectId,
     type: {
         type: String,
         enum: {
