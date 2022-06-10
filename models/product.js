@@ -10,6 +10,7 @@ const productSchema = mongoose.Schema({
     },
     name: {
         type: String,
+        unique: true,
         required: true
     },
     ingredients: String,
@@ -17,7 +18,10 @@ const productSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    img: String
+    img: {
+        type: String,
+        required: true
+    }
 });
 
 const Product = mongoose.model('Product', productSchema);
