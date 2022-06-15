@@ -17,6 +17,10 @@ const orderSchema = mongoose.Schema({
     isConcluded: {
         type: Boolean,
         default: false
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
 });
 

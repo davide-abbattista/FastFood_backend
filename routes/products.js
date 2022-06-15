@@ -1,5 +1,6 @@
 const express = require('express'),
-    productController = require('../controllers/products');
+    productController = require('../controllers/products'),
+    orderController = require('../controllers/orders');
 
 productsRouter = express.Router();
 
@@ -9,6 +10,6 @@ productsRouter.route('/')
 
 productsRouter.route('/:_id')
     .put(productController.updateProduct)
-    .delete(productController.deleteProduct)
+    .delete(productController.deleteProduct, orderController.deleteProductFromOrders);
 
 module.exports = productsRouter;
