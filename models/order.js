@@ -1,5 +1,10 @@
 const mongoose = require('mongoose');
 
+let current = new Date();
+const timeStamp = new Date(Date.UTC(current.getFullYear(),
+    current.getMonth(),current.getDate(),current.getHours(),
+    current.getMinutes(),current.getSeconds()));
+
 const orderSchema = mongoose.Schema({
     clientName: {
         type: String,
@@ -20,7 +25,7 @@ const orderSchema = mongoose.Schema({
     },
     createdAt: {
         type: Date,
-        default: Date.now
+        default: timeStamp
     }
 });
 
