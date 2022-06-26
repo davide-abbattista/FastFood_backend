@@ -36,7 +36,6 @@ module.exports = {
         Product.findByIdAndDelete(req.params._id).exec()
             .then(deletedProduct => {
                 console.log(`${deletedProduct} rimosso`);
-                // res.status(200).json({message: `Il prodotto con id: ${deletedProduct._id} è stato rimosso`});
                 res.locals.idCancelled = deletedProduct._id;
                 res.locals.deletedProductPrice = deletedProduct.price;
                 next();
