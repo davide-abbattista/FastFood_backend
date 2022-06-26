@@ -86,5 +86,6 @@ module.exports = {
                     res.status(200).json({message: `Il prodotto con id: ${res.locals.idCancelled} è stato rimosso`});
                 }
             })
+            .catch(error => res.status(500).json(error))
     }
 }

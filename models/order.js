@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
-let current = new Date();
-const timeStamp = new Date(Date.UTC(current.getFullYear(),
-    current.getMonth(),current.getDate(),current.getHours(),
-    current.getMinutes(),current.getSeconds()));
+// let current = new Date();
+// const timeStamp = new Date(Date.UTC(current.getFullYear(),
+//     current.getMonth(),current.getDate(),current.getHours(),
+//     current.getMinutes(),current.getSeconds()));
 
 const orderSchema = mongoose.Schema({
     clientName: {
@@ -25,7 +25,7 @@ const orderSchema = mongoose.Schema({
     },
     createdAt: {
         type: Date,
-        default: timeStamp
+        default: new Date(Date.UTC(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), new Date().getHours(), new Date().getMinutes(), new Date().getSeconds()))
     }
 });
 
