@@ -7,28 +7,19 @@ module.exports = {
                 console.log('Getting products');
                 res.status(200).json(products);
             })
-            .catch(error => res.status(500).json(error))
+            .catch(error => res.status(500).json({error: error}))
     },
 
     addProduct: (req, res, next) => {
         Product.create(req.body, (error, savedProduct) => {
             if (error) {
-                res.status(500).json(error);
+                res.status(500).json({error: error});
             } else {
                 console.log(`${savedProduct} inserito`);
                 res.status(200).json({message: `Il prodotto con id: ${savedProduct._id} è stato inserito`});
             }
         });
     },
-
-    // findIdOfProduct: (req, res, next) => {
-    //     Product.findOne({productId: req.params.id}).exec()
-    //         .then(product => {
-    //             res.locals.id = product._id;
-    //             next();
-    //         })
-    //         .catch(error => res.status(500).json(error))
-    // },
 
     updateProduct: (req, res, next) => {
         Product.findByIdAndUpdate(req.params._id, {
@@ -38,7 +29,7 @@ module.exports = {
                 console.log(`${oldProduct} aggiornato`);
                 res.status(200).json({message: `Il prodotto con id: ${oldProduct._id} è stato aggiornato`});
             })
-            .catch(error => res.status(500).json(error))
+            .catch(error => res.status(500).json({error: error}))
         },
 
     deleteProduct: (req, res, next) => {
@@ -50,6 +41,6 @@ module.exports = {
                 res.locals.deletedProductPrice = deletedProduct.price;
                 next();
             })
-            .catch(error => res.status(500).json(error));
+            .catch(error => res.status(500).json({error: error}));
     }
 }

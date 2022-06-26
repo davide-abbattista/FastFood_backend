@@ -15,5 +15,5 @@ app.use(router);
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
         console.log("Successful connection to database");
-        app.listen(process.env.PORT, () => console.log("Backend server is running"));
+        app.listen(process.env.PORT || 3000, () => console.log("Backend server is running"));
     });
