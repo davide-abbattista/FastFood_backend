@@ -24,5 +24,3 @@ const orderSchema = mongoose.Schema({
 const Order = mongoose.model('Order', orderSchema);
 
 module.exports = Order;
-
-// default: new Date(Date.UTC(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), new Date().getHours(), new Date().getMinutes(), new Date().getSeconds()))

@@ -4,6 +4,7 @@ module.exports = {
     getOrders: (req, res, next) => {
         Order.find({isConcluded: false}).populate('products').sort({createdAt: 1}).exec()
             .then(orders => {
+                console.log('Getting orders');
                 res.status(200).json(orders);
             })
             .catch(error => res.status(500).json({error: error}))
@@ -25,7 +26,7 @@ module.exports = {
         });
     },
 
-    concludeOrder: (req,res, next) => {
+    concludeOrder: (req, res, next) => {
         Order.findByIdAndUpdate(req.params._id, {
             $set: {isConcluded: true}
         },{new: true}).exec()
@@ -36,14 +37,13 @@ module.exports = {
             .catch(error => res.status(500).json({error: error}))
     },
 
-    deleteProductFromOrders: (req,res,next) => {
+    deleteProductFromOrders: (req, res, next) => {
         Order.find({isConcluded: false}).exec()
             .then(orders => {
                 res.locals.ordersWithCancelledProduct = orders.filter(el => el.products.indexOf(res.locals.idCancelled) !== -1);
             })
             .then(() => {
                 if (res.locals.ordersWithCancelledProduct.length > 0) {
-                    console.log(res.locals.ordersWithCancelledProduct);
                     const idOfOrders = [];
                     for (let i = 0; i < res.locals.ordersWithCancelledProduct.length; i++) {
                         const idOfOrder = res.locals.ordersWithCancelledProduct[i]._id
